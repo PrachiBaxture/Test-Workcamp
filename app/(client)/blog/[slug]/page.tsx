@@ -1,8 +1,7 @@
 import Image from "next/image";
-import {urlForImage} from "../../../../sanity/lib/image";
 import {PortableText} from "@portabletext/react";
 import {notFound, usePathname} from "next/navigation";
-import RelatedPosts from "../../blog/[slug]/relatedPosts";
+// import RelatedPosts from "../../blog/[slug]/relatedPosts";
 import {format} from "date-fns";
 
 import {
@@ -17,6 +16,8 @@ import Toc from "../../blog/[slug]/tableOfContent";
 // import MetadataComponent from "@/components/Metadata";
 import { client } from "@/sanity/lib/client";
 import { slugify } from "@/lib/helpers";
+import { urlForImage } from "@/sanity/lib/image";
+import RelatedPosts from "./relatedPosts";
 
 // To create static pages for dynamic routes
 export default async function page(
@@ -186,7 +187,8 @@ const richTextStyles = `
 const myPortableTextComponents = {
     types: {
         image: ({value}: any) => (
-            <Image src={urlForImage(value)} alt="Post" width={700} height={700} className="pb-4"/>
+            <Image src={urlForImage(value)}
+            alt="Post" width={700} height={700} className="pb-4"/>
         ),
     },
     block: {
